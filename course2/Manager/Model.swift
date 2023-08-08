@@ -29,9 +29,10 @@ struct Course: Codable, Identifiable {
     let cdDownloads: Int?
     let title: String
     let educator: String
-   // let style_tags: [StyleTag]
-   // let skill_tags:[SkillTag]
-   // let curriculum_tags: [String]
+    let skill_tags: [String]?
+    let style_tags: [String]?
+    let curriculum_tags: [String]?
+    let series_tags: [String]?
     let owned: Int
     // Add other properties as needed...
     var imageURL: URL? {
