@@ -11,13 +11,33 @@ class ContentViewModel: ObservableObject {
     @Published var courses: [Course] = []
     @Published  var smart: [Smart] = []
 
+//    func fetchCourses() {
+//        let url = URL(string: "https://api.jsonbin.io/v3/b/6458ec108e4aa6225e98d54d")!
+//        URLSession.shared.dataTask(with: url) { data, _, _ in
+//            if let data = data {
+//                do {
+//                    let decoder = JSONDecoder()
+//                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                    let jsonData = try decoder.decode(Content.self, from: data)
+//                    DispatchQueue.main.async {
+//                        self.smart = jsonData.record.result.collections.smart
+//                        self.courses = jsonData.record.result.index
+//                    }
+//                } catch {
+//                    print("Error decoding JSON: \(error.localizedDescription)")
+//                }
+//            }
+//        }.resume()
+//    }
     func fetchCourses() {
+        // Use the simplified JSON data URL
         let url = URL(string: "https://api.jsonbin.io/v3/b/6458ec108e4aa6225e98d54d")!
         URLSession.shared.dataTask(with: url) { data, _, _ in
             if let data = data {
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    
                     let jsonData = try decoder.decode(Content.self, from: data)
                     DispatchQueue.main.async {
                         self.smart = jsonData.record.result.collections.smart
@@ -29,6 +49,7 @@ class ContentViewModel: ObservableObject {
             }
         }.resume()
     }
+
     func availableStyleOptions() -> [StyleTag] {
            return [.blues, .blueRock] // Update with your actual style options
        }
