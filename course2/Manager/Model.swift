@@ -30,7 +30,7 @@ struct Course: Codable, Identifiable {
     let title: String
     let educator: String
     let skill_tags: [String]?
-    let style_tags: [String]
+    let style_tags: [String]?
     let curriculum_tags: [String]?
     let series_tags: [String]?
     let owned: Int
